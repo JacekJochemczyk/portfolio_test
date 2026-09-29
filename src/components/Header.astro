@@ -1,0 +1,265 @@
+<header class="header">
+	<div class="header-inner">
+
+		<a class="brand" href="/">
+			<span class="logo">JJ</span>
+
+			<div class="brand-text">
+				<strong>Jacek Jochemczyk</strong>
+				<p>IT Support • Cybersecurity • Development</p>
+			</div>
+		</a>
+
+		<button
+			class="menu-toggle"
+			type="button"
+			aria-label="Otwórz menu"
+			aria-expanded="false"
+		>
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+
+		<nav class="nav">
+			<a href="#o-mnie">O mnie</a>
+			<a href="#projekty">Projekty</a>
+			<a href="#certyfikaty">Certyfikaty</a>
+			<a href="#kontakt">Kontakt</a>
+		</nav>
+
+	</div>
+</header>
+
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', () => {
+		const button = document.querySelector('.menu-toggle');
+		const nav = document.querySelector('.nav');
+
+		button?.addEventListener('click', () => {
+			const isOpen = nav?.classList.toggle('open') ?? false;
+
+			button.setAttribute(
+				'aria-expanded',
+				String(isOpen)
+			);
+		});
+	});
+</script>
+
+<style>
+	.header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
+
+		background: rgba(7, 9, 13, 0.82);
+		border-bottom: 1px solid #1f2937;
+
+		backdrop-filter: blur(16px);
+	}
+
+	.header-inner {
+		max-width: 1280px;
+		margin: 0 auto;
+
+		padding: 36px 7%;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		gap: 40px;
+	}
+
+	.brand {
+		display: flex;
+		align-items: center;
+
+		gap: 18px;
+
+		color: white;
+		text-decoration: none;
+
+		min-width: 0;
+	}
+
+	.logo {
+		width: 80px;
+		height: 80px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		flex-shrink: 0;
+
+		border: 1px solid #334155;
+		border-radius: 12px;
+
+		background: #0f172a;
+
+		color: #60a5fa;
+
+		font-size: 1.15rem;
+		font-weight: 800;
+	}
+
+	.brand-text {
+		min-width: 0;
+	}
+
+	.brand strong {
+		display: block;
+
+		font-size: 1.5rem;
+		font-weight: 700;
+
+		line-height: 1.1;
+	}
+
+	.brand p {
+		margin: 7px 0 0;
+
+		font-size: 1rem;
+		font-weight: 500;
+
+		color: #94a3b8;
+	}
+
+	.nav {
+		display: flex;
+		align-items: center;
+
+		gap: 34px;
+	}
+
+	.nav a {
+		color: #a1a1aa;
+
+		font-size: 1.1rem;
+		font-weight: 500;
+
+		text-decoration: none;
+
+		transition:
+			color 0.2s ease,
+			transform 0.2s ease;
+	}
+
+	.nav a:hover {
+		color: #ffffff;
+		transform: translateY(-1px);
+	}
+
+	.menu-toggle {
+		display: none;
+
+		width: 46px;
+		height: 46px;
+
+		padding: 0;
+
+		border: 1px solid #334155;
+		border-radius: 10px;
+
+		background: #111827;
+
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+		gap: 5px;
+
+		cursor: pointer;
+
+		flex-shrink: 0;
+	}
+
+	.menu-toggle span {
+		display: block;
+
+		width: 20px;
+		height: 2px;
+
+		background: #f8fafc;
+
+		border-radius: 999px;
+	}
+
+	@media (max-width: 760px) {
+
+		.header-inner {
+			padding: 14px 20px;
+			position: relative;
+
+			gap: 16px;
+		}
+
+		.brand {
+			gap: 12px;
+			flex: 1;
+		}
+
+		.logo {
+			width: 48px;
+			height: 48px;
+
+			font-size: 0.9rem;
+		}
+
+		.brand strong {
+			font-size: 1rem;
+			line-height: 1.15;
+		}
+
+		.brand p {
+			display: none;
+		}
+
+		.menu-toggle {
+			display: flex;
+
+			margin-left: auto;
+		}
+
+		.nav {
+			display: none;
+
+			position: absolute;
+
+			top: 100%;
+			left: 0;
+			right: 0;
+
+			flex-direction: column;
+			align-items: stretch;
+
+			gap: 0;
+
+			padding: 10px 20px 18px;
+
+			background: rgba(7, 9, 13, 0.98);
+
+			border-bottom: 1px solid #1f2937;
+
+			backdrop-filter: blur(16px);
+		}
+
+		.nav.open {
+			display: flex;
+		}
+
+		.nav a {
+			padding: 14px 0;
+
+			font-size: 1rem;
+
+			border-bottom: 1px solid #161e2b;
+		}
+
+		.nav a:last-child {
+			border-bottom: none;
+		}
+	}
+</style>
