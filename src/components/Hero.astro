@@ -1,16 +1,5 @@
 ---
-const services = [
-	{
-		name: 'TaskPlanner',
-		description: 'Flutter + ASP.NET Core',
-		status: 'ONLINE',
-	},
-	{
-		name: 'Biblioteka',
-		description: 'Blazor + .NET',
-		status: 'ONLINE',
-	},
-];
+import { projects } from '../data/projects';
 ---
 
 <section class="about" id="o-mnie">
@@ -86,20 +75,35 @@ const services = [
 
 			<div class="services">
 
-				{services.map((service) => (
+				{projects.map((project) => (
 					<div class="service">
 
 						<div class="service-info">
-							<span class="dot"></span>
+							<span
+								class:list={[
+									'dot',
+									project.status === 'ONLINE' && 'active'
+								]}
+							></span>
 
 							<div>
-								<strong>{service.name}</strong>
-								<p>{service.description}</p>
+								<strong>{project.title}</strong>
+
+								<p>
+									{project.technologies
+										.slice(0, 2)
+										.join(' + ')}
+								</p>
 							</div>
 						</div>
 
-						<span class="online">
-							{service.status}
+						<span
+							class:list={[
+								'service-status',
+								project.status === 'ONLINE' && 'online'
+							]}
+						>
+							{project.status}
 						</span>
 
 					</div>
@@ -359,6 +363,10 @@ const services = [
 
 		border-radius: 50%;
 
+		background: #64748b;
+	}
+
+	.service-info .dot.active {
 		background: #22c55e;
 
 		box-shadow:
@@ -379,15 +387,20 @@ const services = [
 		font-size: 0.75rem;
 	}
 
-	.online {
-		color: #22c55e;
+	.service-status {
+	color: #94a3b8;
 
-		font-size: 0.67rem;
+	font-size: 0.67rem;
+	font-weight: 700;
 
-		font-weight: 700;
+	letter-spacing: 0.08em;
 
-		letter-spacing: 0.08em;
-	}
+	text-transform: uppercase;
+}
+
+.service-status.online {
+	color: #22c55e;
+}
 
 	.status-footer {
 		display: flex;
