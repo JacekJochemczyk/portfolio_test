@@ -1,0 +1,190 @@
+---
+import { certificates } from '../data/certificates';
+import CertificateItem from './CertificateItem.astro';
+import CertificateModal from './CertificateModal.astro';
+---
+
+<section class="certificates-section" id="certyfikaty">
+	<div class="certificates-container">
+
+		<div class="section-header">
+
+			<span class="section-label">
+				CERTYFIKATY
+			</span>
+
+			<h2>
+				Szkolenia i certyfikaty
+			</h2>
+
+			<p>
+				Wybrane szkolenia i certyfikaty związane
+				z cyberbezpieczeństwem, monitoringiem,
+				programowaniem i administracją środowiskami IT.
+			</p>
+
+		</div>
+
+
+		<div class="certificates-list">
+
+			{
+				certificates.map((certificate) => (
+
+					<CertificateItem
+						title={certificate.title}
+						organization={certificate.organization}
+						year={certificate.year}
+						description={certificate.description}
+						image={certificate.image}
+						result={certificate.result}
+						trainer={certificate.trainer}
+					/>
+
+				))
+			}
+
+		</div>
+
+	</div>
+</section>
+
+<CertificateModal />
+
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', () => {
+
+		const certificatesList =
+			document.querySelector('.certificates-list');
+
+		if (!certificatesList) {
+			return;
+		}
+
+		certificatesList.addEventListener('click', (event) => {
+
+			const target = event.target;
+
+			if (!(target instanceof Element)) {
+				return;
+			}
+
+			const button =
+				target.closest('.certificate-header');
+
+			if (!button) {
+				return;
+			}
+
+			const item =
+				button.closest('.certificate-item');
+
+			if (!item) {
+				return;
+			}
+
+			const icon =
+				button.querySelector('.toggle-icon');
+
+			const isOpen =
+				item.classList.toggle('is-open');
+
+			button.setAttribute(
+				'aria-expanded',
+				String(isOpen)
+			);
+
+			if (icon) {
+				icon.textContent =
+					isOpen ? '−' : '+';
+			}
+
+		});
+
+	});
+</script>
+
+<style>
+
+	.certificates-section {
+		padding: 110px 7%;
+
+		background:
+			radial-gradient(
+				circle at 20% 20%,
+				rgba(59, 130, 246, 0.06),
+				transparent 35%
+			),
+			#07090d;
+	}
+
+
+	.certificates-container {
+		max-width: 1280px;
+
+		margin: 0 auto;
+	}
+
+
+	.section-header {
+		max-width: 760px;
+
+		margin-bottom: 50px;
+	}
+
+
+	.section-label {
+		display: inline-block;
+
+		margin-bottom: 12px;
+
+		color: #60a5fa;
+
+		font-size: 0.78rem;
+		font-weight: 700;
+
+		letter-spacing: 0.16em;
+	}
+
+
+	.section-header h2 {
+		margin: 0;
+
+		color: #f8fafc;
+
+		font-size: clamp(2rem, 4vw, 3rem);
+
+		line-height: 1.1;
+	}
+
+
+	.section-header p {
+		margin: 16px 0 0;
+
+		color: #94a3b8;
+
+		font-size: 1rem;
+
+		line-height: 1.7;
+	}
+
+
+	.certificates-list {
+		width: 100%;
+	}
+
+
+	@media (max-width: 600px) {
+
+		.certificates-section {
+			padding: 75px 20px;
+		}
+
+
+		.section-header {
+			margin-bottom: 35px;
+		}
+
+	}
+
+</style>
