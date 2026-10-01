@@ -1,0 +1,396 @@
+<footer class="footer" id="kontakt">
+	<div class="footer-container">
+
+		<div class="footer-main">
+
+			<div class="footer-about">
+				<h2>Jacek Jochemczyk</h2>
+
+				<p>
+					IT Support • Cybersecurity • Development
+				</p>
+
+				<p class="footer-description">
+					Rozwijam się w obszarze wsparcia IT,
+					monitoringu, cyberbezpieczeństwa
+					i tworzenia własnych aplikacji.
+				</p>
+			</div>
+
+
+			<div class="footer-contact">
+
+				<p class="footer-label">
+					KONTAKT
+				</p>
+
+				<a
+					href="mailto:j.jochemczyk@gmail.com"
+				>
+					j.jochemczyk@gmail.com
+				</a>
+
+
+				<div class="phone-row">
+
+					<span>
+						Telefon:
+					</span>
+
+					<button
+						class="phone-toggle"
+						type="button"
+						aria-expanded="false"
+					>
+						Pokaż numer
+					</button>
+
+					<a
+						class="phone-number"
+						href="tel:+48537425572"
+						hidden
+					>
+						+48 537 425 572
+					</a>
+
+				</div>
+
+			</div>
+
+
+			<div class="footer-links">
+
+				<p class="footer-label">
+					LINKI
+				</p>
+
+				<a
+					href="https://github.com/JacekJochemczyk"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					GitHub ↗
+				</a>
+
+				<a
+	                href="https://www.linkedin.com/in/jacek-jochemczyk-266a2b340/"
+	                target="_blank"
+	                rel="noopener noreferrer"
+                >
+	                LinkedIn ↗
+                </a>
+
+                <a
+	                href="/cv/Jacek_Jochemczyk_CV.pdf"
+	                download="Jacek_Jochemczyk_CV.pdf"
+                >
+	                Pobierz CV ↓
+                </a>
+
+			</div>
+
+		</div>
+
+
+		<div class="footer-bottom">
+
+			<span>
+				© 2026 Jacek Jochemczyk
+			</span>
+
+			<span>
+				Astro • Docker • Nginx
+			</span>
+
+		</div>
+
+	</div>
+</footer>
+
+
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', () => {
+
+		const button =
+			document.querySelector('.phone-toggle');
+
+		const phone =
+			document.querySelector('.phone-number');
+
+
+		if (!button || !phone) {
+			return;
+		}
+
+
+		button.addEventListener('click', () => {
+
+			const isVisible =
+				!phone.hasAttribute('hidden');
+
+
+			if (isVisible) {
+
+				phone.setAttribute(
+					'hidden',
+					''
+				);
+
+				button.textContent =
+					'Pokaż numer';
+
+				button.setAttribute(
+					'aria-expanded',
+					'false'
+				);
+
+			} else {
+
+				phone.removeAttribute(
+					'hidden'
+				);
+
+				button.textContent =
+					'Ukryj numer';
+
+				button.setAttribute(
+					'aria-expanded',
+					'true'
+				);
+
+			}
+
+		});
+
+	});
+</script>
+
+
+<style>
+
+	.footer {
+		padding: 70px 7% 30px;
+
+		border-top: 1px solid #1f2937;
+
+		background:
+			radial-gradient(
+				circle at 15% 20%,
+				rgba(59, 130, 246, 0.05),
+				transparent 30%
+			),
+			#07090d;
+	}
+
+
+	.footer-container {
+		max-width: 1280px;
+
+		margin: 0 auto;
+	}
+
+
+	.footer-main {
+		display: grid;
+
+		grid-template-columns:
+			1.4fr 1fr 0.8fr;
+
+		gap: 70px;
+
+		padding-bottom: 50px;
+	}
+
+
+	.footer-about h2 {
+		margin: 0;
+
+		color: #f8fafc;
+
+		font-size: 1.5rem;
+	}
+
+
+	.footer-about > p {
+		margin: 8px 0 0;
+
+		color: #60a5fa;
+
+		font-size: 0.9rem;
+
+		font-weight: 600;
+	}
+
+
+	.footer-about
+	.footer-description {
+		max-width: 470px;
+
+		margin-top: 20px;
+
+		color: #64748b;
+
+		font-size: 0.9rem;
+
+		font-weight: 400;
+
+		line-height: 1.7;
+	}
+
+
+	.footer-label {
+		margin: 0 0 18px;
+
+		color: #475569;
+
+		font-size: 0.7rem;
+
+		font-weight: 700;
+
+		letter-spacing: 0.14em;
+	}
+
+
+	.footer-contact,
+	.footer-links {
+		display: flex;
+
+		flex-direction: column;
+
+		align-items: flex-start;
+	}
+
+
+	.footer-contact > a,
+	.footer-links a {
+		margin-bottom: 12px;
+
+		color: #cbd5e1;
+
+		font-size: 0.9rem;
+
+		text-decoration: none;
+
+		transition:
+			color 0.2s ease;
+	}
+
+
+	.footer-contact > a:hover,
+	.footer-links a:hover {
+		color: #ffffff;
+	}
+
+
+	.phone-row {
+		display: flex;
+
+		align-items: center;
+
+		flex-wrap: wrap;
+
+		gap: 8px;
+
+		color: #64748b;
+
+		font-size: 0.88rem;
+	}
+
+
+	.phone-toggle {
+		padding: 0;
+
+		border: 0;
+
+		background: transparent;
+
+		color: #60a5fa;
+
+		font-size: 0.88rem;
+
+		font-weight: 600;
+
+		cursor: pointer;
+	}
+
+
+	.phone-toggle:hover {
+		color: #93c5fd;
+	}
+
+
+	.phone-number {
+		color: #e2e8f0;
+
+		text-decoration: none;
+
+		font-weight: 600;
+	}
+
+
+	.footer-bottom {
+		display: flex;
+
+		align-items: center;
+		justify-content: space-between;
+
+		gap: 20px;
+
+		padding-top: 24px;
+
+		border-top: 1px solid #161e2b;
+
+		color: #475569;
+
+		font-size: 0.75rem;
+	}
+
+
+	@media (max-width: 850px) {
+
+		.footer-main {
+			grid-template-columns:
+				1fr 1fr;
+
+			gap: 45px;
+		}
+
+
+		.footer-about {
+			grid-column: 1 / -1;
+		}
+
+	}
+
+
+	@media (max-width: 600px) {
+
+		.footer {
+			padding:
+				55px 20px 25px;
+		}
+
+
+		.footer-main {
+			grid-template-columns: 1fr;
+
+			gap: 35px;
+		}
+
+
+		.footer-about {
+			grid-column: auto;
+		}
+
+
+		.footer-bottom {
+			align-items: flex-start;
+
+			flex-direction: column;
+
+			gap: 8px;
+		}
+
+	}
+
+</style>
