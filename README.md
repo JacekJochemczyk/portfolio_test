@@ -33,7 +33,7 @@ Celem projektu było przygotowanie lekkiej, szybkiej i łatwej w utrzymaniu stro
 
 Dane projektów i certyfikatów zostały oddzielone od komponentów:
 
-src/data/projects.ts
+src/data/projects.ts  
 src/data/certificates.ts
 
 Dzięki temu dodanie kolejnego projektu lub certyfikatu nie wymaga przebudowy całej sekcji.
